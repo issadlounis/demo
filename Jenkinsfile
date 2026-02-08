@@ -7,7 +7,8 @@ stage('build') {
 
 steps {
 bat 'mvn clean package'
-archiveArtifacts artifacts: 'target/*.jar'
+archiveArtifacts 'target/*.jar'
+junit 'target/surefire-reports/*.xml'
 }
 
 }

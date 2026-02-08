@@ -20,6 +20,7 @@ stage('build') {
 steps {
 bat 'mvn clean package'
 archiveArtifacts 'target/*.jar'
+
         emailext(subject: "Build réussi: ",
                 body: "Le build a réussi.",
                 to: "louniscntsid@gmail.com"

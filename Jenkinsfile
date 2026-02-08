@@ -21,27 +21,29 @@ steps {
 bat 'mvn clean package'
 archiveArtifacts 'target/*.jar'
 
-        mail(subject: "Build réussi: ",
-                body: "Le build a réussi.",
-                to: "louniscntsid@gmail.com"
-                )
+
 }
 }
 
-/*post {
-    always {
+post {
+    /*always {
         echo "Build stage complete"
-    }
+    }*/
+
     failure {
-        echo "Build failed"
+                mail(subject: "Build réussi: ",
+                        body: "Le build a échoué.",
+                        to: "louniscntsid@gmail.com"
+                        )
     }
+
     success {
-        emailext(subject: "Build réussi: ",
-                body: "Le build a réussi.",
-                to: "louniscntsid@gmail.com"
-                )
+               mail(subject: "Build réussi: ",
+                       body: "Le build a réussi.",
+                       to: "louniscntsid@gmail.com"
+                       )
     }
-}*/
+}
 
 stage('documentation') {
 steps {

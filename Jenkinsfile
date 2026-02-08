@@ -29,6 +29,8 @@ bat 'mvn javadoc:javadoc'
 /*bat 'powershell Compress-Archive -Path target/site/* -DestinationPath target/doc.zip'
 archiveArtifacts artifacts: 'target/doc.zip'*/
 
+}
+
 post {
     always {
         publishHTML([
@@ -42,8 +44,6 @@ post {
     }
 }
 }
-}
 
 }
-
 }

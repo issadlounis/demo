@@ -33,8 +33,7 @@ archiveArtifacts artifacts: 'target/doc.zip'*/
 
 stage('publish report') {
 steps {
-    post {
-        always {
+
             publishHTML([
                 allowMissing: false,
                 alwaysLinkToLastBuild: true,
@@ -43,8 +42,7 @@ steps {
                 reportFiles: 'index.html',
                 reportName: 'Documentation'
             ])
-        }
-    }
+
 }
 }
 

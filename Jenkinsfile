@@ -23,6 +23,21 @@ archiveArtifacts 'target/*.jar'
 }
 }
 
+post {
+    always {
+        echo "Build stage complete"
+    }
+    failure {
+        echo "Build failed"
+    }
+    success {
+        emailext(subject: "Build réussi: ",
+                body: "Le build a réussi.",
+                to: "louniscntsid@gmail.com"
+                )
+    }
+}
+
 stage('documentation') {
 steps {
 bat 'mvn javadoc:javadoc'

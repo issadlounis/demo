@@ -23,6 +23,18 @@ archiveArtifacts 'target/*.jar'
 }
 }
 
+stage('documentation') {
+steps {
+bat 'mvn javadoc:javadoc'
+bat '''
+mkdir -p doc
+cp -r target/site/* doc/
+zip -r doc.zip doc
+'''
+archiveArtifacts artifacts: 'doc.zip'
+}
+}
+
 }
 
 }

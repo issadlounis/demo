@@ -11,4 +11,5 @@ bat 'mvn clean package'
 
 }
 }
+
 }

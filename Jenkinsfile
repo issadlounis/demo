@@ -21,11 +21,11 @@ steps {
 bat 'mvn clean package'
 archiveArtifacts 'target/*.jar'
 }
-
+ /*
 post {
-    /*always {
+    always {
         echo "Build stage complete"
-    }*/
+    }
 
     failure {
                 mail(subject: "Build réussi: ",
@@ -41,6 +41,7 @@ post {
                        )
     }
 }
+*/
 
 }
 

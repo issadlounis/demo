@@ -67,5 +67,11 @@ steps {
 }
 }
 
+stage('deployment') {
+steps {
+    bat 'docker-compose up --build'
+}
+}
+
 }
 }

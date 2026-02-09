@@ -8,7 +8,7 @@ steps {
 bat 'mvn clean'
 }
 }
-
+/*
 stage('test') {
 steps {
 bat 'mvn test'
@@ -20,7 +20,7 @@ stage('build') {
 steps {
 bat 'mvn clean package'
 archiveArtifacts 'target/*.jar'
-}
+}*/
  /*
 post {
     always {
@@ -43,6 +43,22 @@ post {
 }
 */
 
+//}
+
+stage('Build & Test in Parallel') {
+    parallel {
+        stage('Build') {
+            steps {
+                bat 'mvn clean package'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                bat 'mvn test'
+            }
+        }
+    }
 }
 
 stage('documentation') {
